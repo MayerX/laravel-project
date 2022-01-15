@@ -10,11 +10,15 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.4",
         "autoprefixer": "^10.4.2",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.4.5",
         "tailwindcss": "^3.0.13"
+    },
+    "dependencies": {
+        "daisyui": "^1.23.0"
     }
 }
