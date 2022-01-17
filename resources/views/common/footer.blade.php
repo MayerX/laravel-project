@@ -1,8 +1,4 @@
-@extends('common.app')
-
-
-
-<footer class="flex items-center px-6 py-4 bg-white flex-row">
+<footer class="flex items-center px-6 py-4 bg-white flex-row mx-52 rounded">
     <a href="#" class="w-1/12 text-xl font-bold text-gray-800 hover:text-gray-700 text-center">怡家康复网</a>
     
     <p class="py-2 text-gray-800 w-full justify-center text-center">

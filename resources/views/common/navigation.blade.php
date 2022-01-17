@@ -1,23 +1,23 @@
 @extends('common.app')
 
-<div class="px-32 py-5 mx-auto shadow">
-    <div class="relative flex items-center grid-cols-2 lg:grid-cols-3">
-        <ul class="flex items-center space-x-5 lg:flex">
+<div class="px-12 py-5 mx-auto ">
+    <div class="relative flex items-center grid-cols-2">
+        <ul class="flex items-center space-x-5">
             <li>
                 <a href="/"
-                    class="font-medium text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">关于中风</a>
+                    class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">关于中风</a>
             </li>
             <li>
                 <a href="/"
-                    class="font-medium text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">关于我们</a>
+                    class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">关于我们</a>
             </li>
             <li>
                 <a href="/"
-                    class="font-medium text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">会员注册</a>
+                    class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">会员注册</a>
             </li>
             <li>
                 <a href="/"
-                    class="font-medium text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">产品及服务</a>
+                    class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">产品及服务</a>
             </li>
         </ul>
         <a href="/" class="inline-flex items-center lg:mx-auto">
@@ -33,17 +33,17 @@
         <ul class="flex items-center hidden ml-auto space-x-8 lg:flex">
             <li>
                 <a href="/"
-                    class="font-medium text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">联系我们</a>
+                    class="font-medium text-gray-700 transition-colors duration-200 hover:text-slate-700">联系我们</a>
             </li>
             <li>
                 <a href="/"
-                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
+                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-slate-700">
                     登录
                 </a>
             </li>
             <li>
                 <a href="/"
-                    class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none">
+                    class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-slate-600 hover:bg-slate-700 focus:shadow-outline focus:outline-none">
                     注册
                 </a>
             </li>

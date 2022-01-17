@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,9 +10,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     @yield('link')
 </head>
+
+<style>
+    body {
+        background-color: rgb(72, 160, 220);
+    }
+
+    p {
+        text-indent: 2em
+    }
+
+</style>
+
 <body>
     <header>@yield('header')</header>
-    @yield('content')
+    <div class="my-10 mx-52 rounded-md bg-white">
+        @yield('content')
+    </div>
     <footer>@yield('footer')</footer>
 
     <script src="{{ asset('js/app.js') }}"></script>
