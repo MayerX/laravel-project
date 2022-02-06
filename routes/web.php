@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +22,10 @@ Route::get('/', function () {
 Route::get('/test', function () {
 })->name('test');
 
-Route::get('/index', function(){
-    return view('index.index');
-})->name('index');
+//Route::get('/index', function(){
+//    return view('index.index');
+//})->name('index');
+
+Route::get('/index', [IndexController::class, 'index'])->name('index');
 
 Route::get('/controller', [TestController::class, 'demo']);
