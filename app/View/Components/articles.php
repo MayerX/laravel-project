@@ -6,6 +6,13 @@ use Illuminate\View\Component;
 
 class articels extends Component
 {
+
+    // 列表标题
+    public $title;
+
+    // 前五个列表内容
+    public $list;
+
     /**
      * Create a new component instance.
      *
