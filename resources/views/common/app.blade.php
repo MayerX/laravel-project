@@ -32,4 +32,9 @@
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('script')
 </body>
+
+<script>
+    setTimeout(() => window.scrollTo(0,0), 150)
+</script>
+
 </html>

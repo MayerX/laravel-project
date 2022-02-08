@@ -5,6 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @OA\Get(
+ *     path="/index",
+ *     description="首页",
+ *     operationId="IndexController",
+ *     @OA\Response(response="200", description="展示首页")
+ * )
+ */
+
 class IndexController extends Controller
 {
     public function index()

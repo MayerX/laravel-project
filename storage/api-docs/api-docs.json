@@ -1,0 +1,24 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Bmeirs2020",
+        "description": "Bmeirs2020API文档",
+        "version": "0.1"
+    },
+    "paths": {
+        "/index": {
+            "get": {
+                "description": "首页",
+                "operationId": "IndexController",
+                "responses": {
+                    "200": {
+                        "description": "展示首页"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
