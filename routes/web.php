@@ -19,13 +19,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Route::get('/pages', function(){
+//    return view('pages.pages');
+//})->name('pages');
+
+// 首页
+Route::get('/pages', [IndexController::class, 'index'])->name('pages');
+
+// 关于我们
+Route::get('/about', function (){
+    return view('pages.about');
+})->name('about');
+
+// 会员注册
+Route::get('/register', function (){
+    return view('pages.register');
+})->name('register');
+
+// 测试用例
+Route::get('/controller', [TestController::class, 'demo']);
+
 Route::get('/test', function () {
 })->name('test');
-
-//Route::get('/index', function(){
-//    return view('index.index');
-//})->name('index');
-
-Route::get('/index', [IndexController::class, 'index'])->name('index');
-
-Route::get('/controller', [TestController::class, 'demo']);

@@ -24,7 +24,7 @@
 
 <body>
     <header>@yield('header')</header>
-    <div class="my-10 mx-52 rounded-md bg-white">
+    <div class="mb-6 mx-52 rounded-md bg-white">
         @yield('content')
     </div>
     <footer>@yield('footer')</footer>

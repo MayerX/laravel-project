@@ -1,22 +1,18 @@
-@extends('common.app')
+@extends('layouts.app')
 
 @section('title', '首页')
 
 @section('link')
-    {{-- <link rel="stylesheet" href="{{ asset('css/index.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/pages.css') }}"> --}}
 @endsection
 
 @section('content')
     {{-- 首页视频 --}}
-    <div class="w-full ">
-        <video src="{{ asset('video/home.mp4') }}" autoplay loop class="w-auto mx-auto">
-            您的浏览器不支持 video 标签
-        </video>
-    </div>
+    @include('common._video')
     {{-- 导航栏 --}}
-    @include('common._navigation')
+    @include('pages._navigation')
     {{-- 搜索 --}}
-    @include('index._search', ['categories' =>  $categories])
+    @include('pages._search', ['categories' =>  $categories])
     {{-- 介绍 --}}
     <div class="mt-4">
         <x-intro title="脑卒中" message="脑卒中（即脑中风，即脑血管意外疾病），是指由于各种原因导致的脑血管功能障碍，引起相关症状，如脑组织缺血缺

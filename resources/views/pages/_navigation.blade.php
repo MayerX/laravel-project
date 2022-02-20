@@ -1,18 +1,18 @@
-@extends('common.app')
+@extends('layouts.app')
 
 <div class="px-12 py-5 mx-auto ">
     <div class="relative flex items-center grid-cols-2">
         <ul class="flex items-center space-x-5">
             <li>
-                <a href="/"
+                <a href="{{ url('pages') }}"
                     class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">关于中风</a>
             </li>
             <li>
-                <a href="/"
+                <a href="{{ url('about') }}"
                     class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">关于我们</a>
             </li>
             <li>
-                <a href="/"
+                <a href="{{ url('register') }}"
                     class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">会员注册</a>
             </li>
             <li>
@@ -20,7 +20,7 @@
                     class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">产品及服务</a>
             </li>
         </ul>
-        <a href="/" class="inline-flex items-center lg:mx-auto">
+        <a href="{{ url('pages') }}" class="inline-flex items-center lg:mx-auto">
             <svg class="w-8 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linejoin="round" stroke-width="2"
                 stroke-linecap="round" stroke-miterlimit="10" stroke="currentColor" fill="none">
                 <rect x="3" y="1" width="7" height="12"></rect>

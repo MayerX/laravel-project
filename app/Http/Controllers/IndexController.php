@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * @OA\Get(
- *     path="/index",
+ *     path="/pages",
  *     description="首页",
  *     operationId="IndexController",
  *     @OA\Response(response="200", description="展示首页")
@@ -35,6 +35,6 @@ class IndexController extends Controller
             $articlesList[$key] = $articles;
         }
 
-        return view('index.index', compact('articlesList', 'categories'));
+        return view('pages.pages', compact('articlesList', 'categories'));
     }
 }

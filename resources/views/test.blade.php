@@ -1,1 +1,1 @@
-@include('index._search', ['tags' => $tags])
+@include('pages._search')

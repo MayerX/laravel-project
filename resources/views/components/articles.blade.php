@@ -9,11 +9,11 @@
         @foreach($list as $article)
             <dl>
                 <div class="bg-gray-50 px-4 py-5 grid grid-flow-col gap-y-10">
-                    <dd class="text-sm font-medium text-gray-600 hover:text-gray-700 text-center mt-1">
+                    <dd class="text-xs font-medium text-gray-600 hover:text-gray-700 text-left mt-1">
                         {{--                    <a href="#">得了脑血管病可以活多少年？</a>--}}
                         <a href="#">{{ $article->title }}</a>
 {{--                    </dd>--}}
-                    <dd class="mt-1 text-sm text-gray-900 text-right">{{ $article->posted }}</dd>
+                    <dd class="mt-1 text-xs text-gray-900 text-right">{{ $article->posted }}</dd>
                 </div>
             </dl>
         @endforeach
