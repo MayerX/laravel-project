@@ -4,7 +4,7 @@
     <div class="relative flex items-center grid-cols-2">
         <ul class="flex items-center space-x-5">
             <li>
-                <a href="{{ url('pages') }}"
+                <a href="{{ url('index') }}"
                     class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">关于中风</a>
             </li>
             <li>
@@ -16,7 +16,7 @@
                     class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">会员注册</a>
             </li>
             <li>
-                <a href="/"
+                <a href="{{ url('ProductsandServices') }}"
                     class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">产品及服务</a>
             </li>
         </ul>

@@ -21,7 +21,7 @@
                 <div>
                     <span class="pl-3 py-2 text-base rounded-full text-slate-700 hover:text-slate-500">
                         <i class="fas fa-tag"></i>
-                        <a href="#" class="text-sm break-words">{{ $categories[$index]->name }}</a>
+                        <a href="{{ asset('articles/tag/'. $categories[$index]->ID) }}" class="text-sm break-words">{{ $categories[$index]->name }}</a>
                     </span>
                 </div>
             @endfor

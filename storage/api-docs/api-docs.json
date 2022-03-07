@@ -16,6 +16,73 @@
                     }
                 }
             }
+        },
+        "/articlde/{postid}": {
+            "get": {
+                "tags": [
+                    "文章"
+                ],
+                "description": "展示文章",
+                "parameters": [
+                    {
+                        "name": "postid",
+                        "in": "path",
+                        "description": "文章id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                  "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Fount"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Post": {
+                "type": "object",
+                "properties": {
+                    "postid": {
+                        "type": "number"
+                    },
+                    "parentid": {
+                        "type": "number"
+                    },
+                    "poster": {
+                        "type": "number"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "content": {
+                        "type": "string"
+                    },
+                    "post": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "number"
+                    },
+                    "timesofview": {
+                        "type": "number"
+                    }
+                }
+            }
         }
     },
     "security": [

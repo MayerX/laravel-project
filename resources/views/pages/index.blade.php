@@ -3,7 +3,7 @@
 @section('title', '首页')
 
 @section('link')
-    {{-- <link rel="stylesheet" href="{{ asset('css/pages.css') }}"> --}}
+
 @endsection
 
 @section('content')
@@ -24,10 +24,10 @@
     {{-- 推荐文章 --}}
     <div class="flex mx-20">
         <div class="w-1/2 mr-4">
-            <x-articles :title="$categories[0]" :list="$articlesList[0]"/>
+            <x-article_list :title="$categories[0]" :list="$articlesList[0]"/>
         </div>
         <div class="w-1/2 mr-4">
-            <x-articles :title="$categories[1]" :list="$articlesList[1]"/>
+            <x-article_list :title="$categories[1]" :list="$articlesList[1]"/>
         </div>
     </div>
     {{-- 介绍 --}}
@@ -40,10 +40,10 @@
     {{-- 推荐文章 --}}
     <div class="flex mx-20">
         <div class="w-1/2 mr-4">
-            <x-articles :title="$categories[2]" :list="$articlesList[2]"/>
+            <x-article_list :title="$categories[2]" :list="$articlesList[2]"/>
         </div>
         <div class="w-1/2 mr-4">
-            <x-articles :title="$categories[3]" :list="$articlesList[3]"/>
+            <x-article_list :title="$categories[3]" :list="$articlesList[3]"/>
         </div>
     </div>
     {{-- 介绍 --}}
@@ -56,10 +56,10 @@
     {{-- 推荐文章 --}}
     <div class="flex mx-20">
         <div class="w-1/2 mr-4">
-            <x-articles :title="$categories[4]" :list="$articlesList[4]"/>
+            <x-article_list :title="$categories[4]" :list="$articlesList[4]"/>
         </div>
         <div class="w-1/2 mr-4">
-            <x-articles :title="$categories[5]" :list="$articlesList[5]"/>
+            <x-article_list :title="$categories[5]" :list="$articlesList[5]"/>
         </div>
     </div>
 @endsection

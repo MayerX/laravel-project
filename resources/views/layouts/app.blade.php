@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Default')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+{{--    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">--}}
     @yield('link')
 </head>
 
@@ -24,10 +24,15 @@
 
 <body>
     <header>@yield('header')</header>
-    <div class="mb-6 mx-52 rounded-md bg-white">
+    <div class="mb-6 max-w-screen-lg mx-auto rounded-md bg-white ">
         @yield('content')
     </div>
-    <footer>@yield('footer')</footer>
+
+    <footer>
+        <div class="mx-auto max-w-screen-lg rounded-md bg-white">
+            @yield('footer')
+        </div>
+    </footer>
 
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('script')

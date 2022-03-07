@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class articles extends Component
+class article_list extends Component
 {
 
     // 列表标题
@@ -18,7 +18,8 @@ class articles extends Component
 
     /**
      * Create a new component instance.
-     *
+     * @param $title
+     * @param $list
      * @return void
      */
     public function __construct($title, $list)
@@ -34,6 +35,6 @@ class articles extends Component
      */
     public function render()
     {
-        return view('components.articles');
+        return view('components.article_list');
     }
 }

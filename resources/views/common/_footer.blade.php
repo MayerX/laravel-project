@@ -1,6 +1,5 @@
-<footer class="flex items-center px-6 py-4 bg-white flex-row mx-52 rounded">
-    <a href="#" class="w-1/12 text-xl font-bold text-gray-800 hover:text-gray-700 text-center">怡家康复网</a>
-    
+<footer class="flex items-center px-4 py-4 bg-white flex-row mx-32 rounded">
+    <a href="{{ asset('index/') }}" class="w-1/6 text-xl font-bold text-gray-800 hover:text-gray-700 text-center">怡家康复网</a>
     <p class="py-2 text-gray-800 w-full justify-center text-center">
         Copyright © 2010-2018 版权所有 嘉兴市现代复健技术推广服务中心
     </br>
