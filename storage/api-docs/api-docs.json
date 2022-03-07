@@ -17,7 +17,7 @@
                 }
             }
         },
-        "/articlde/{postid}": {
+        "/articles/{postid}": {
             "get": {
                 "tags": [
                     "文章"
@@ -40,7 +40,65 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                  "$ref": "#/components/schemas/Post"
+                                    "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Fount"
+                    }
+                }
+            }
+        },
+        "/articles/tag/{category}": {
+            "get": {
+                "tags": [
+                    "文章"
+                ],
+                "description": "文章列表",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "description": "标签id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Fount"
+                    }
+                }
+            }
+        },
+        "/articles": {
+            "get": {
+                "tags": [
+                    "文章"
+                ],
+                "description": "所有文章",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Post"
                                 }
                             }
                         }

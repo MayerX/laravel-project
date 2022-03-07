@@ -65,8 +65,8 @@ Route::get('/404', function (){
 
 // 测试用例
 //Route::get('/controller', [TestController::class, 'demo']);
-Route::get('/controller/{post}', [TestController::class, 'demo'])
-    ->name('controller')->whereNumber('id');
+Route::get('/controller', [TestController::class, 'demo'])
+    ->name('controller');
 
 Route::get('/test/{id}', function ($id) {
     return view('test', compact('id'));

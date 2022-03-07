@@ -13,7 +13,9 @@ class TestController extends Controller
 {
     public function demo(Post $post)
     {
-        $name = PersonalDetail::query()->where('userId', $post->poster)->get()[0]->name;
-        return view('resources.articles.show', compact('post', 'name'));
+        $articles = Post::query()->paginate(5);
+        $categories = PostCategory::query()->pluck('name');
+
+        return view('test', compact('articles', 'categories'));
     }
 }

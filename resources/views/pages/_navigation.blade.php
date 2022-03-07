@@ -20,7 +20,7 @@
                     class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">产品及服务</a>
             </li>
         </ul>
-        <a href="{{ url('pages') }}" class="inline-flex items-center lg:mx-auto">
+        <a href="{{ url('index') }}" class="inline-flex items-center lg:mx-auto">
             <svg class="w-8 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linejoin="round" stroke-width="2"
                 stroke-linecap="round" stroke-miterlimit="10" stroke="currentColor" fill="none">
                 <rect x="3" y="1" width="7" height="12"></rect>

@@ -8,7 +8,17 @@
     {{-- 导航栏 --}}
     @include('pages._navigation')
 
-    <div class="px-4 py-16 mx-auto max-w-full">
+    <div class="flex border-b border-gray-200 justify-center">
+        <button class="h-10 px-4 py-2 -mb-px text-sm text-center text-gray-700 bg-transparent border-b-2 border-transparent sm:text-base whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400">
+            <a href="{{ asset('articles/') }}">所有文章</a>
+        </button>
+
+        <button class="h-10 px-4 py-2 -mb-px text-sm text-center text-blue-500 bg-transparent border-b-2 border-blue-500 sm:text-base whitespace-nowrap focus:outline-none">
+            <a href="{{ asset('articles/tag/'. $categoryObject->ID) }}">{{ $categoryObject->name }}</a>
+        </button>
+    </div>
+
+    <div class="px-4 py-8 mx-auto max-w-full">
         @foreach($articles as $article)
             <div class="mb-10 border-t border-b divide-y">
                 <div class="grid py-8 grid-cols-4">
@@ -20,7 +30,7 @@
                     <div class="col-span-2">
                         <div class="text-center">
                             <a href="{{ asset('articles/'. $article->postid) }}" aria-label="Article"
-                               class="inline-block text-black transition-colors duration-200 hover:text-deep-purple-accent-700">
+                               class="inline-block text-black transition-colors text-slate-800 duration-200 hover:text-blue-500">
                                 <p class="text-lg font-extrabold leading-none">
                                     {{ $article->title }}
                                 </p>
@@ -34,6 +44,7 @@
             </div>
         @endforeach
     </div>
+    {{ $articles->links() }}
 @endsection
 
 @section('footer')

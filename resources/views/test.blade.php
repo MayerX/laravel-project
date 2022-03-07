@@ -1,15 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '文章')
-
-@section('link')
-<style>
-    p {
-        padding-bottom: 0.3rem;
-        padding-top: 0.3rem;
-    }
-</style>
-@endsection
+@section('title', '所有文章')
 
 @section('content')
     {{-- 首页视频 --}}
@@ -17,28 +8,36 @@
     {{-- 导航栏 --}}
     @include('pages._navigation')
 
-    <div class="px-4 py-6 mx-auto max-w-full px-16">
-        <div class="mb-6">
-            <h2 class="mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900">
-                脑血栓的诊断标准和方法
-            </h2>
-            <div
-                class="inline-flex items-center font-semibold transition-colors duration-200 text-gray-400">
-                时间：12年05月03日 15:11 作者：管理员 点击次数：650
+    <div class="px-4 py-8 mx-auto max-w-full">
+        @foreach($articles as $article)
+            <div class="mb-10 border-t border-b divide-y">
+                <div class="grid py-8 grid-cols-4">
+                    <div class="mb-4">
+                        <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
+                            <a href="/"
+                               class="transition-colors duration-200 text-slate-800 hover:text-blue-500"
+                               aria-label="Category"><p>{{ $categories[$article->category] }}</p></a>
+                            <p class="text-gray-600">{{ $article->posted }}</p>
+                        </div>
+                    </div>
+                    <div class="col-span-2">
+                        <div class="text-center">
+                            <a href="{{ asset('articles/'. $article->postid) }}" aria-label="Article"
+                               class="inline-block text-black transition-colors duration-200 hover:text-blue-500">
+                                <p class="text-lg font-extrabold leading-none">
+                                    {{ $article->title }}
+                                </p>
+                            </a>
+                        </div>
+                        <p class="text-gray-700 text-left truncate pt-2">
+                            {{ \Illuminate\Support\Str::limit(strip_tags($article->content), 57, '...') }}
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="text-base text-gray-700 leading-normal tracking-wide">
-            <p>
-                有人说得了脑血管病就活不长了，至少不可能长寿。这种说法固然有一定道理，因为迄今为止脑血管病的死亡率高，而且发病后存活者几乎一半的人在3～10年内死亡，但也不绝对认为患了脑血管病一定活不长了。因为脑血管病发生以后再活上20年者也不乏其人，活到70岁或80岁以上者也经常能看到。据国内有人观察结果，脑血管病后活5年者占62％，活6～10年者占20％，活11～15年占15％，活15年甚至20年以上者占3％。值得注意的是，脑血管病以后能活上10年以上者占20％左右。该组脑血管病人的平均寿命为66岁，有40％的脑血管病人寿命为70岁以上，5％为80岁以上，有一例活到88岁。有一女病人在63岁时发生脑血管病，左侧肢体部分瘫痪，但能在室内活动和处理自己的一些生活琐事、由于坚持长期治疗和功能锻炼，发病后已活了24年，至今已经87岁高龄了。一名男性高级工程师，70岁时发生脑血栓形成，左侧肢体瘫痪，经治疗后能依靠拐仗行走，思维智力无大影响，4年后仍能指导研究生和发表论文翻译资料，至今6年多仍能做一些工作，情况良好。为什么脑血管病发生后仅五分之一的病人可以活10年以上呢？这就要看该病人脑血管病的性质和严重程度如何了。譬如出血量大，脑血管梗塞的范围大。神经系统的损害和偏瘫的程度严重，则病人存活的时间短；如在脑血管病发生后的三个月到一年内治疗效果好，恢复程度佳，则后遗症明显减少。病人的寿命就可延长；长期卧床严重偏瘫病人多因合并感染或其他并发症而容易早亡，而轻度偏瘫治疗，注意功能锻炼，多数病人可再活10年甚至20年以上，因此，患中风患者应以积极疗法的态度面对疾病。
-            </p>
-            <p>
-                无论哪种情况的脑血管病患者，预后好坏始终离不开持续可靠的综合治疗对脑血管病患者预后的决定权。只有坚持科学有效的针对病因的康复防治，才有可能使病情重的患者得到最大程度的恢复，能够达到自理回归幸福的生活甚至工作中去；才有可能使病症轻的患者完全康复远离疾病困扰。
-            </p>
-            <p>
-                无论哪种情况的脑血管病患者，预后好坏始终离不开持续可靠的综合治疗对脑血管病患者预后的决定权。只有坚持科学有效的针对病因的康复防治，才有可能使病情重的患者得到最大程度的恢复，能够达到自理回归幸福的生活甚至工作中去；才有可能使病症轻的患者完全康复远离疾病困扰。
-            </p>
-        </div>
+        @endforeach
     </div>
+    {{ $articles->links() }}
 @endsection
 
 @section('footer')

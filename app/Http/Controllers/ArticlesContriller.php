@@ -17,7 +17,7 @@ class ArticlesContriller extends Controller
      */
     public function all()
     {
-        $articles = Post::all();
+        $articles = Post::query()->paginate(5);
         $categories = PostCategory::query()->pluck('name');
 
         return view('resources.articles.all', compact('articles', 'categories'));
@@ -30,9 +30,10 @@ class ArticlesContriller extends Controller
      */
     public function index($category)
     {
-        $articles = Post::query()->where('category', $category)->get();
+        $articles = Post::query()->where('category', $category)->paginate(5);
+        $categoryObject = PostCategory::query()->where('ID', $category)->get()[0];
 
-        return view('resources.articles.index', compact('articles'));
+        return view('resources.articles.index', compact('articles', 'categoryObject'));
     }
 
     /**
