@@ -55,8 +55,11 @@ Route::get('/articles/tag/{category}', [ArticlesContriller::class, 'index'])
     ->name('articles.index')
     ->whereNumber('postCategory');
 
-Route::get('/articles', [ArticlesContriller::class, 'all'])
+Route::get('/articles', [ArticlesContriller::class, 'showAll'])
     ->name('articles.all');
+
+Route::get('/articles/search', [ArticlesContriller::class, 'search'])
+    ->name('articles.search');
 
 // 自定义404
 Route::get('/404', function (){

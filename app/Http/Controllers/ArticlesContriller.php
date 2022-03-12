@@ -5,22 +5,31 @@ namespace App\Http\Controllers;
 use App\Models\PersonalDetail;
 use App\Models\Post;
 use App\Models\PostCategory;
+use Doctrine\DBAL\Driver\AbstractDB2Driver;
 use Illuminate\Http\Request;
 
 class ArticlesContriller extends Controller
 {
+
+    public function search(Request $request)
+    {
+        $keyword = $request['keyword'];
+        $articles = Post::query()->where('title', 'like', '%' . $keyword . '%')->paginate(5);
+
+        return view('resources.articles.search', compact('articles', 'keyword'));
+    }
 
     /**
      * Undocumented function
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|void
      */
-    public function all()
+    public function showAll()
     {
         $articles = Post::query()->paginate(5);
         $categories = PostCategory::query()->pluck('name');
 
-        return view('resources.articles.all', compact('articles', 'categories'));
+        return view('resources.articles.show_all', compact('articles', 'categories'));
     }
 
     /**
@@ -31,9 +40,9 @@ class ArticlesContriller extends Controller
     public function index($category)
     {
         $articles = Post::query()->where('category', $category)->paginate(5);
-        $categoryObject = PostCategory::query()->where('ID', $category)->get()[0];
+        $categories = PostCategory::query()->pluck('name');
 
-        return view('resources.articles.index', compact('articles', 'categoryObject'));
+        return view('resources.articles.index', compact('articles', 'categories', 'category'));
     }
 
     /**
@@ -66,7 +75,9 @@ class ArticlesContriller extends Controller
     public function show(Post $post)
     {
         $name = PersonalDetail::query()->where('userId', $post->poster)->get()[0]->name;
-        return view('resources.articles.show', compact('post', 'name'));
+        $categories = PostCategory::query()->pluck('name');
+
+        return view('resources.articles.show', compact('post', 'name', 'categories'));
     }
 
     /**

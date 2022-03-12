@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '文章列表')
+@section('title', '搜索结果')
 
 @section('content')
     {{-- 首页视频 --}}
@@ -24,7 +24,7 @@
 
             <button
                 class="h-10 px-4 py-2 -mb-px text-sm text-center text-blue-500 bg-transparent border-b-2 border-blue-500 whitespace-nowrap focus:outline-none">
-                <a href="{{ asset('articles/tag/'. $category) }}">{{ $categories[$category] }}</a>
+                搜索结果
             </button>
         </div>
 
