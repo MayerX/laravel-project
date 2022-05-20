@@ -330,6 +330,7 @@ module.exports = {
         backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
     },
     plugins: [
-        // require('daisyui'),
+        require('@tailwindcss/forms'),
+        require('alpinejs'),
     ],
 }

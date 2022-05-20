@@ -2,14 +2,14 @@
     <div class="inline-flex ml-4">
         <div class="flex items-center p-5 space-x-2 bg-white rounded-xl shadow-lg">
             <form action="{{ asset('/articles/search') }}" class="flex" method="get">
-                <div class="flex bg-gray-100 p-4 w-60 space-x-2 rounded-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 opacity-30" fill="none" viewBox="0 0 24 24"
+                <div class="flex bg-gray-100 p-4 w-60 space-x-2 rounded-lg ">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 opacity-30" fill="none" viewBox="0 0 24 24"
                          stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                     </svg>
                     <label>
-                        <input class="bg-gray-100 outline-none" type="text" placeholder="文章" name="keyword"/>
+                        <input class="bg-gray-100 outline-none w-1/3 border-none border-transparent focus:ring-0" type="text" placeholder="文章" name="keyword"/>
                     </label>
                 </div>
                 <button

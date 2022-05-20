@@ -8,13 +8,13 @@ class intro extends Component
 {
 
     // 文章标题
-    public $title;
+    public string $title;
 
     // 文章内容
-    public $message;
+    public string $message;
 
     // 图片路径
-    public $imageSrc;
+    public string $imageSrc;
 
     /**
      * Create a new component instance.

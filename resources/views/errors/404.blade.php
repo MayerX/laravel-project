@@ -41,12 +41,12 @@
 
 <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');" :class="{ 'dark': isDark }">
     <!-- Loading screen -->
-    <div
-        x-ref="loading"
-        class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-black bg-opacity-90"
-    >
-        Loading.....
-    </div>
+{{--    <div--}}
+{{--        x-ref="loading"--}}
+{{--        class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-black bg-opacity-90"--}}
+{{--    >--}}
+{{--        Loading.....--}}
+{{--    </div>--}}
     <main
         aria-labelledby="pageTitle"
         class="flex items-center justify-center h-screen bg-gray-100 dark:bg-dark dark:text-light"

@@ -8,13 +8,13 @@ class article_list extends Component
 {
 
     // 列表标题
-    public $title;
+    public string $title;
 
     // 前五个列表内容
-    public $list;
+    public array $list;
 
     // 链接
-    public $urls;
+    // public string $urls;
 
     /**
      * Create a new component instance.

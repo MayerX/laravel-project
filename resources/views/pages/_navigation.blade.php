@@ -12,10 +12,6 @@
                     class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">关于我们</a>
             </li>
             <li>
-                <a href="{{ url('register') }}"
-                    class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">会员注册</a>
-            </li>
-            <li>
                 <a href="{{ url('ProductsandServices') }}"
                     class="font-medium text-gray-600 transition-colors duration-200 hover:text-slate-700">产品及服务</a>
             </li>

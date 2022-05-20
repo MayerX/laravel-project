@@ -3,6 +3,9 @@
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ArticlesContriller;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,10 +38,10 @@ Route::get('/about', function () {
     ->name('about');
 
 // 会员注册
-Route::get('/register', function () {
-    return view('pages.register');
+Route::get('/register_info', function () {
+    return view('pages.register_info');
 })
-    ->name('register');
+    ->name('registerInfo');
 
 // 产品及服务
 Route::get('/ProductsandServices', function () {
@@ -47,23 +50,58 @@ Route::get('/ProductsandServices', function () {
     ->name('ProductsandServices');
 
 // article文章
-Route::get('/articles/{post}',[ArticlesContriller::class, 'show'])
-    ->name('articles.show')
-    ->whereNumber('post');
+Route::prefix('articles')->name('Articles.')->group(function () {
+    Route::get('{post}', [ArticlesContriller::class, 'show'])->whereNumber('post')->name('show');
+    Route::get('tag/{category}', [ArticlesContriller::class, 'index'])->whereNumber('category')->name('index');
+    Route::get('', [ArticlesContriller::class, 'showAll'])->name('all');
+    Route::get('/search', [ArticlesContriller::class, 'search'])->name('search');
+});
 
-Route::get('/articles/tag/{category}', [ArticlesContriller::class, 'index'])
-    ->name('articles.index')
-    ->whereNumber('postCategory');
+// doctor医生
+Route::prefix('doctor')->name('Doctor.')->group(function (){
+    Route::get('', [DoctorController::class, 'index'])->name('index');
+    Route::get('patients', [DoctorController::class, 'show_patients'])->name('show_patients');
+    Route::get('patient_detail', function (){
+        return view('resources/doctor/patient_detail');
+    })->name('show_patient');
+    Route::prefix('prescription')->name('Prescription.')->group(function (){
+        Route::get('index', function (){
+            return view('resources/doctor/prescription/index');
+        });
+        Route::get('show', function (){
+            return view('resources/doctor/prescription/show');
+        });
+    });
+});
 
-Route::get('/articles', [ArticlesContriller::class, 'showAll'])
-    ->name('articles.all');
+// 登录注册
+Route::get('/register', [RegisterController::class, 'create'])->name('register');
+Route::get('/login', [LoginController::class, 'create'])->name('login');
 
-Route::get('/articles/search', [ArticlesContriller::class, 'search'])
-    ->name('articles.search');
+//Route::group(['prefix'=>'articles', 'namespace'=>'Articles'], function ()`{
+//    Route::get('{post}', [ArticlesContriller::class, 'show'])->whereNumber('post')->name('show');
+//    Route::get('tag/{category}', [ArticlesContriller::class, 'index'])->whereNumber('category')->name('index');
+//    Route::get('')->name('all');
+//    Route::get('/search', [ArticlesContriller::class, 'search'])->name('search');
+//});
+
+//Route::get('/articles/{post}',[ArticlesContriller::class, 'show'])
+//    ->name('articles.show')
+//    ->whereNumber('post');
+//
+//Route::get('/articles/tag/{category}', [ArticlesContriller::class, 'index'])
+//    ->name('articles.index')
+//    ->whereNumber('postCategory');
+//
+//Route::get('/articles', [ArticlesContriller::class, 'showAll'])
+//    ->name('articles.all');
+//
+//Route::get('/articles/search', [ArticlesContriller::class, 'search'])
+//    ->name('articles.search');
 
 // 自定义404
-Route::get('/404', function (){
-    return view('common.404');
+Route::get('/404', function () {
+    return view('errors.404');
 });
 
 // 测试用例
@@ -71,8 +109,8 @@ Route::get('/404', function (){
 Route::get('/controller', [TestController::class, 'demo'])
     ->name('controller');
 
-Route::get('/test/{id}', function ($id) {
-    return view('test', compact('id'));
+Route::get('/test', function () {
+    return view('layouts.doctor');
 })
     ->name('test')
     ->whereNumber('id');
