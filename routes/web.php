@@ -64,13 +64,32 @@ Route::prefix('doctor')->name('Doctor.')->group(function (){
     Route::get('patient_detail', function (){
         return view('resources/doctor/patient_detail');
     })->name('show_patient');
+    // 康复处方
     Route::prefix('prescription')->name('Prescription.')->group(function (){
         Route::get('index', function (){
             return view('resources/doctor/prescription/index');
-        });
+        })->name('index');
         Route::get('show', function (){
             return view('resources/doctor/prescription/show');
-        });
+        })->name('show');
+    });
+    // 视频指导
+    Route::prefix('guide')->name('Guide.')->group(function (){
+        Route::get('index', function (){
+            return view('resources/doctor/guide/index');
+        })->name('index');
+    });
+    // 康复数据
+    Route::prefix('rehab')->name('Rehab.')->group(function (){
+        Route::get('index', function (){
+            return view('resources/doctor/rehab/index');
+        })->name('rehab');
+    });
+    // 生成报告
+    Route::prefix('report')->name('Report.')->group(function (){
+        Route::get('index', function (){
+            return view('resources/doctor/report/index');
+        })->name('report');
     });
 });
 
@@ -110,7 +129,7 @@ Route::get('/controller', [TestController::class, 'demo'])
     ->name('controller');
 
 Route::get('/test', function () {
-    return view('layouts.doctor');
+    return view('test');
 })
     ->name('test')
     ->whereNumber('id');

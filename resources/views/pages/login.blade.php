@@ -6,7 +6,7 @@
     <div class="max-w-lg mx-auto bg-white rounded-lg shadow-2xl object-center my-10">
         <h1 class="text-2xl font-bold text-center text-indigo-600 pt-6">登陆</h1>
 
-        <form action="" class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl" x-data="password()">
+        <form id="login" action="" class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl" x-data="showPassword()">
             <div>
                 <label for="account" class="text-sm font-medium">账号</label>
 
@@ -17,7 +17,6 @@
                         class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                         placeholder="请输入账号"
                     />
-
                     <span class="absolute inset-y-0 inline-flex items-center right-4"></span>
                 </div>
             </div>
@@ -31,10 +30,10 @@
                         id="password"
                         class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                         placeholder="请输入密码"
-                        x-bind:type="show()"
+                        x-bind:type="changePasswordType()"
                     />
 
-                    <span class="absolute inset-y-0 inline-flex items-center right-4" @click="judge()">
+                    <span class="absolute inset-y-0 inline-flex items-center right-4" @click="changePassword()">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             class="w-5 h-5 text-gray-400"
@@ -73,19 +72,19 @@
 </div>
 
 @section('script')
-
     <script>
-        function password() {
+        function showPassword() {
             return {
-                isShow: false,
-                judge() {
-                    // if (this.isShow === false) this.isShow = true;
-                    // else this.isShow = false;
-                    this.isShow = this.isShow === false;
-                    console.log(this.isShow);
+                isPassword: false,
+                show_text() {
+
                 },
-                show() {
-                    if (this.isShow === true) {
+                changePassword() {
+                    this.isPassword = this.isPassword === false;
+                    // console.log(this.isPassword);
+                },
+                changePasswordType() {
+                    if (this.isPassword === true) {
                         return 'text';
                     } else return 'password';
                 }

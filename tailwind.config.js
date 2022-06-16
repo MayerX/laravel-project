@@ -5,6 +5,7 @@ module.exports = {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        './node_modules/tw-elements/dist/js/**/*.js',
     ],
     theme: {
         extend: {
@@ -331,6 +332,6 @@ module.exports = {
     },
     plugins: [
         require('@tailwindcss/forms'),
-        require('alpinejs'),
+        require('tw-elements/dist/plugin'),
     ],
 }

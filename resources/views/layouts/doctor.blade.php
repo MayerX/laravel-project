@@ -7,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>医生</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+    {{--    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>--}}
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/manifest.js') }}" defer></script>
+    <script src="{{ asset('js/vendor.js') }}" defer></script>
     @yield('link')
 </head>
 
@@ -22,28 +23,33 @@
 
         <div class="flex flex-col justify-between flex-1 mt-6">
             <nav>
-                <a class="flex items-center px-4 py-2 rounded-md text-gray-700 bg-gray-200"
+                <a class="flex items-center px-4 py-2 rounded-md {{ Request::is('doctor') ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
                    href="{{ url('doctor/') }}">
                     <span class="mx-4 font-medium">基本信息</span>
                 </a>
 
-                <a class="flex items-center px-4 py-2 mt-5 rounded-md text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700"
+                <a class="flex items-center px-4 py-2 mt-5 rounded-md {{ Request::is('doctor/patients') ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
                    href="{{ url('doctor/patients') }}">
                     <span class="mx-4 font-medium">病人管理</span>
                 </a>
 
-                <a class="flex items-center px-4 py-2 mt-5 rounded-md text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700"
+                <a class="flex items-center px-4 py-2 mt-5 rounded-md {{ Request::is('doctor/prescription/index') ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
                    href="{{ url('doctor/prescription/index') }}">
                     <span class="mx-4 font-medium">康复处方</span>
                 </a>
 
-                <a class="flex items-center px-4 py-2 mt-5 rounded-md text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700"
-                   href="/">
+                <a class="flex items-center px-4 py-2 mt-5 rounded-md {{ Request::is('doctor/guide/index') ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
+                   href="{{ url('doctor/guide/index') }}">
                     <span class="mx-4 font-medium">视频指导</span>
                 </a>
 
-                <a class="flex items-center px-4 py-2 mt-5 rounded-md text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700"
-                   href="/">
+                <a class="flex items-center px-4 py-2 mt-5 rounded-md {{ Request::is('doctor/rehab/index') ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
+                   href="{{ url('doctor/rehab/index') }}">
+                    <span class="mx-4 font-medium">康复数据</span>
+                </a>
+
+                <a class="flex items-center px-4 py-2 mt-5 rounded-md {{ Request::is('doctor/report/index') ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
+                   href="{{ url('doctor/report/index') }}">
                     <span class="mx-4 font-medium">生成报告</span>
                 </a>
 

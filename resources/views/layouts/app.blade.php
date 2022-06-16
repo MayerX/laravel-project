@@ -7,7 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Default')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+{{--    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>--}}
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/manifest.js') }}" defer></script>
+    <script src="{{ asset('js/vendor.js') }}" defer></script>
 {{--    <script src="//unpkg.com/alpinejs" defer></script>--}}
 {{--    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">--}}
     @yield('link')
@@ -38,10 +41,6 @@
         </div>
     </footer>
 
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/manifest.js') }}"></script>
-{{--    <script src="js/app.js"></script>--}}
-{{--    <script src="js/manifest.js"></script>--}}
     @yield('script')
 </body>
 
