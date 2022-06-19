@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PersonalDetail;
 use App\Models\Post;
 use App\Models\PostCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -15,7 +17,6 @@ use Illuminate\Support\Facades\DB;
  *     @OA\Response(response="200", description="展示首页")
  * )
  */
-
 class IndexController extends Controller
 {
     public function index()
@@ -37,6 +38,15 @@ class IndexController extends Controller
             $articlesList[$key] = $articles;
         }
 
-        return view('pages.index', compact('articlesList', 'categories'));
+        $user = null;
+        $auth = Auth::user();
+
+        if ($auth != null) {
+            $user = PersonalDetail::query()
+                ->where('userId', '=', $auth['userId'])
+                ->first();
+        }
+
+        return view('pages.index', compact('articlesList', 'categories', 'user'));
     }
 }

@@ -58,36 +58,36 @@ Route::prefix('articles')->name('Articles.')->group(function () {
 });
 
 // doctor医生
-Route::prefix('doctor')->name('Doctor.')->group(function (){
+Route::prefix('doctor')->name('Doctor.')->group(function () {
     Route::get('', [DoctorController::class, 'index'])->name('index');
     Route::get('patients', [DoctorController::class, 'show_patients'])->name('show_patients');
-    Route::get('patient_detail', function (){
+    Route::get('patient_detail', function () {
         return view('resources/doctor/patient_detail');
     })->name('show_patient');
     // 康复处方
-    Route::prefix('prescription')->name('Prescription.')->group(function (){
-        Route::get('index', function (){
+    Route::prefix('prescription')->name('Prescription.')->group(function () {
+        Route::get('index', function () {
             return view('resources/doctor/prescription/index');
         })->name('index');
-        Route::get('show', function (){
+        Route::get('show', function () {
             return view('resources/doctor/prescription/show');
         })->name('show');
     });
     // 视频指导
-    Route::prefix('guide')->name('Guide.')->group(function (){
-        Route::get('index', function (){
+    Route::prefix('guide')->name('Guide.')->group(function () {
+        Route::get('index', function () {
             return view('resources/doctor/guide/index');
         })->name('index');
     });
     // 康复数据
-    Route::prefix('rehab')->name('Rehab.')->group(function (){
-        Route::get('index', function (){
+    Route::prefix('rehab')->name('Rehab.')->group(function () {
+        Route::get('index', function () {
             return view('resources/doctor/rehab/index');
         })->name('rehab');
     });
     // 生成报告
-    Route::prefix('report')->name('Report.')->group(function (){
-        Route::get('index', function (){
+    Route::prefix('report')->name('Report.')->group(function () {
+        Route::get('index', function () {
             return view('resources/doctor/report/index');
         })->name('report');
     });
@@ -95,7 +95,13 @@ Route::prefix('doctor')->name('Doctor.')->group(function (){
 
 // 登录注册
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
-Route::get('/login', [LoginController::class, 'create'])->name('login');
+
+Route::prefix('login')->name('Login.')->group(function (){
+    Route::get('', [LoginController::class, 'index'])->name('index')->middleware('guest');
+    Route::post('', [LoginController::class, 'login'])->name('login');
+    Route::post('/test', [LoginController::class, 'login'])->name('login');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+});
 
 //Route::group(['prefix'=>'articles', 'namespace'=>'Articles'], function ()`{
 //    Route::get('{post}', [ArticlesContriller::class, 'show'])->whereNumber('post')->name('show');

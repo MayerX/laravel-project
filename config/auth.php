@@ -13,6 +13,9 @@ return [
     |
     */
 
+    // 默认设置
+    // guard 看守器
+    // passwords 重置密码相关
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
@@ -35,6 +38,9 @@ return [
     |
     */
 
+    // 看守器设置
+    // driver 引擎
+    // provider 实体模型
     'guards' => [
         'web' => [
             'driver' => 'session',
@@ -59,6 +65,7 @@ return [
     |
     */
 
+    // 实体模型
     'providers' => [
         'users' => [
             'driver' => 'eloquent',

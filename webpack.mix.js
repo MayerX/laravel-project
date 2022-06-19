@@ -16,4 +16,6 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss'),
     ]);
 mix.extract(['alpine']);
+mix.copy('node_modules/jquery/dist/jquery.js', 'public/vendor/jquery/jquery.js');
+mix.copy('node_modules/jquery.nicescroll/dist/jquery.nicescroll.js', 'public/vendor/jquery/jquery.niceScroll.js');
 // mix.extract(['tw-elements']);
