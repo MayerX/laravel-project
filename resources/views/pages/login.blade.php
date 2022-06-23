@@ -23,7 +23,7 @@
                     <span class="absolute inset-y-0 inline-flex items-center right-4"></span>
                 </div>
 
-                <p id="accountRemind" class="text-sm text-red-500 text-right my-2 hidden">账号不能为空</p>
+                <p id="usernameRemind" class="text-sm text-red-500 text-right my-2 hidden">账号不能为空</p>
             </div>
 
             <div>

@@ -63,8 +63,8 @@
                         class="inline-flex items-center justify-center
                         h-12 px-6 font-medium tracking-wide text-white transition
                          duration-200 rounded shadow-md bg-blue-600">
-                        @if($user != null)
-                            {{ $user['name'] }}
+                        @if(session()->has('username'))
+                            {{ session()->get('username') }}
 {{--                            {{ session()->get('type') }}--}}
                         @else
                             空

@@ -10,7 +10,7 @@
     {{-- 首页视频 --}}
     @include('common._video')
     {{-- 导航栏 --}}
-    @include('pages._navigation', ['user' => $user])
+    @include('pages._navigation')
     {{-- 搜索 --}}
     @include('pages._search', ['categories' =>  $categories])
     {{-- 介绍 --}}

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\DB;
  */
 class IndexController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // 连接目录数据库
         $categories = PostCategory::query()->get();
@@ -45,8 +45,9 @@ class IndexController extends Controller
             $user = PersonalDetail::query()
                 ->where('userId', '=', $auth['userId'])
                 ->first();
+            session()->put('username', $user['name']);
         }
 
-        return view('pages.index', compact('articlesList', 'categories', 'user'));
+        return view('pages.index', compact('articlesList', 'categories'));
     }
 }

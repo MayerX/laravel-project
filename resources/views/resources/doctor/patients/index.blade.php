@@ -1,0 +1,108 @@
+@extends('layouts.doctor')
+
+@section('content')
+    <div class="p-4 mx-4 my-4 bg-white rounded-md shadow-lg">
+        <div class="container p-2 mx-auto sm:p-4 dark:text-coolGray-100">
+            <div>
+                <h2 class="mb-4 text-2xl font-semibold leading-tight">病人管理</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-xs">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col class="w-24">
+                    </colgroup>
+                    <thead>
+                    <tr class="text-left text-center">
+                        <th class="p-8 w-3 font-bold text-lg">成员ID</th>
+                        <th class="p-8 w-3 font-bold text-lg">姓名</th>
+                        <th class="p-8 w-6 font-bold text-lg">用户类型</th>
+                        <th class="p-8 w-6 font-bold text-lg">出生日期</th>
+                        <th class="p-8 w-6 font-bold text-lg">头像</th>
+                        <th class="p-8 w-6 font-bold text-lg">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($patients as $patient)
+                        <tr class="border-b border-opacity-20 text-center">
+                            <td class="p-6">
+                                <p>{{ $patient->userId }}</p>
+                            </td>
+                            <td class="p-6">
+{{--                                <a href="{{ url('doctor/patient_detail') }}" class="hover:text-blue-500">--}}
+{{--                                    {{ $patient->name }}--}}
+{{--                                </a>--}}
+                                <p>{{ $patient->name }}</p>
+                            </td>
+                            <td class="p-6">
+                                <p>
+                                    病人（
+                                    @if($patient->limited == 1)
+                                        初级用户
+                                    @elseif($patient->limited == 2)
+                                        中级用户
+                                    @elseif($patient->limited == 3)
+                                        高级用户
+                                    @endif
+                                    ）
+                                </p>
+                            </td>
+                            <td class="p-6">
+                                <p>{{ $patient->dateOfBirth }}</p>
+                            </td>
+                            <td class="p-6 justify-center flex">
+                                <img src="{{ asset('image/morentouxiang.jpg') }}" alt="" width="50px" class="">
+                            </td>
+                            <td class="p-6 justify-center">
+                                <a
+                                    href="{{ url('doctor/patients/'.$patient->userId) }}"
+                                    class="inline-block px-6 py-2.5
+                                    justify-center text-center
+                                    bg-blue-600 text-white font-medium text-xs leading-tight
+                                    uppercase rounded shadow-md hover:bg-blue-700
+                                    hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                                    active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+                                    查看
+                                </a>
+                                <a
+                                    href="{{ url('doctor/patients/'.$patient->userId) }}"
+                                    class="inline-block px-6 py-2.5
+                                    justify-center text-center
+                                    bg-red-600 text-white font-medium text-xs leading-tight
+                                    uppercase rounded shadow-md hover:bg-red-700
+                                    hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0
+                                    active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">
+                                    删除
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    {{--                    <tr class="border-b border-opacity-20">--}}
+                    {{--                        <td class="p-6">--}}
+                    {{--                            <p>97412378923</p>--}}
+                    {{--                        </td>--}}
+                    {{--                        <td class="p-6">--}}
+                    {{--                            <a href="{{ url('doctor/patient_detail') }}" class="hover:text-blue-500">Microsoft Corporation</a>--}}
+                    {{--                        </td>--}}
+                    {{--                        <td class="p-6">--}}
+                    {{--                            <p>14 Jan 2022</p>--}}
+                    {{--                        </td>--}}
+                    {{--                        <td class="p-6">--}}
+                    {{--                            <p>01 Feb 2022</p>--}}
+                    {{--                        </td>--}}
+                    {{--                        <td class="p-6">--}}
+                    {{--                            <p>$15,792</p>--}}
+                    {{--                        </td>--}}
+                    {{--                    </tr>--}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-5">
+                {{ $patients->links() }}
+            </div>
+        </div>
+    </div>
+@endsection

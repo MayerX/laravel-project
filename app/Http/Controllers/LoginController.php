@@ -49,7 +49,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        $request->session()->forget('type');
+        session()->flush();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

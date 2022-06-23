@@ -1,4 +1,4 @@
-<div class="flex justify-center pb-10">
+<div class="flex justify-center">
     @if($paginator->onFirstPage())
         <div
             class="flex items-center justify-center px-4 py-2 mx-1 text-gray-500 capitalize bg-white rounded-md cursor-not-allowed">

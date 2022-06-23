@@ -9,77 +9,117 @@
                     <p class="font-medium">基本信息</p>
                 </div>
                 <div class="grid grid-cols-6 gap-4 col-span-full">
-                    <div class="col-span-full">
-                        <label for="firstname" class="text-sm">ID</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                    <div class="col-span-1">
+                        <label for="firstname" class="text-sm">用户ID</label>
+                        <p id="firstname" type="text" class="w-full text-center rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ $doctor['userId'] }}
+                        </p>
                     </div>
-                    <div class="col-span-2">
+                    <div class="col-span-1">
                         <label for="lastname" class="text-sm">用户名</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full text-center rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ auth()->user()['username'] }}
+                        </p>
                     </div>
-                    <div class="col-span-2">
+                    <div class="col-span-1">
                         <label for="email" class="text-sm">全名</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full text-center rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ $doctor['name'] }}
+                        </p>
                     </div>
-                    <div class="col-span-2">
+                    <div class="col-span-1">
                         <label for="address" class="text-sm">用户类型</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full text-center rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            医生
+                        </p>
                     </div>
-                    <div class="col-span-2">
+                    <div class="col-span-1">
                         <label for="address" class="text-sm">性别</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full text-center rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            @if($doctor['sex'] == 'M')
+                                男
+                            @elseif($doctor['sex'] == 'F')
+                                女
+                            @endif
+                        </p>
                     </div>
-                    <div class="col-span-2">
+                    <div class="col-span-1">
                         <label for="address" class="text-sm">民族</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full text-center rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ $doctor['minzu'] }}
+                        </p>
                     </div>
-                    <div class="col-span-2">
+                    <div class="col-span-1">
                         <label for="address" class="text-sm">婚姻</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full text-center rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ $doctor['hunyin'] }}
+                        </p>
                     </div>
-                    <div class="col-span-2">
+                    <div class="col-span-1">
                         <label for="address" class="text-sm">籍贯</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full text-center rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ $doctor['jiguan'] }}
+                        </p>
                     </div>
                     <div class="col-span-2">
                         <label for="address" class="text-sm">出生时间</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ $doctor['dateOfBirth'] }}
+                        </p>
                     </div>
                     <div class="col-span-2">
                         <label for="address" class="text-sm">年龄</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ $doctor['age'] }}
+                        </p>
                     </div>
                     <div class="col-span-full">
                         <label for="address" class="text-sm">地址</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ $doctor['address'] }}
+                        </p>
                     </div>
                     <div class="col-span-2">
                         <label for="address" class="text-sm">所属医院</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ session()->get('hospitalName')->find($doctor['Hospital'])['name'] }}
+                        </p>
                     </div>
                     <div class="col-span-2">
                         <label for="address" class="text-sm">所属科室</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ $doctor['Department'] }}
+                        </p>
                     </div>
                     <div class="col-span-2">
                         <label for="address" class="text-sm">所属社区</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ session()->get('communityName')->find($doctor['community'])['name'] }}
+                        </p>
                     </div>
                     <div class="col-span-3">
                         <label for="address" class="text-sm">邮箱</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ $doctor['email'] }}
+                        </p>
                     </div>
                     <div class="col-span-3">
                         <label for="address" class="text-sm">手机</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ $doctor['mobilephone'] }}
+                        </p>
                     </div>
                     <div class="col-span-3">
                         <label for="address" class="text-sm">登记日期</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ $doctor['dateJoined'] }}
+                        </p>
                     </div>
                     <div class="col-span-3">
                         <label for="address" class="text-sm">最近登陆</label>
-                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">123</p>
+                        <p id="firstname" type="text" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
+                            {{ date_create()->format('Y-m-d') }}
+                        </p>
                     </div>
                 </div>
             </fieldset>
