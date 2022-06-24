@@ -10,29 +10,37 @@
                 <form class="flex" method="get" action="{{ url('doctor/prescription/'.session()->get('patient_id')) }}">
                     @csrf
                     <div class="datepicker relative form-floating text-sm" data-mdb-toggle-button="false">
-                        <input type="text" name="startTime"
+                        <input type="text" id="datepickerStart" name="startTime" autocomplete="off"
                                class="block mx-2 px-2 py-1.5 text-sm bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                               placeholder="开始时间"
-                               data-mdb-toggle="datepicker"/>
+                               placeholder="开始时间"/>
                     </div>
                     <div class="datepicker relative form-floating text-sm" data-mdb-toggle-button="false">
-                        <input type="text" name="endTime"
+                        <input type="text" id="datepickerEnd" name="endTime" autocomplete="off"
                                class="block mx-2 px-2 py-1.5 text-sm bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                               placeholder="结束时间"
-                               data-mdb-toggle="datepicker"/>
+                               placeholder="结束时间"/>
                     </div>
                     <button type="submit"
-                        class="inline-block mx-2 px-4 py-1.5 text-sm font-medium text-indigo-600 border border-blue-600 rounded hover:bg-blue-600 hover:text-white active:bg-blue-600 focus:outline-none focus:ring">
+                            class="inline-block px-6 py-1.5 mx-2
+                                    justify-center text-center
+                                    bg-blue-600 text-white font-medium text-xs leading-tight
+                                    uppercase rounded shadow-md hover:bg-blue-700
+                                    hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                                    active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
                         选定
                     </button>
                 </form>
-                {{--                <div>--}}
-                {{--                    <a href="{{ url('doctor/prescription/index') }}">--}}
-                {{--                        <button class="inline-block mx-2 px-4 py-1.5 text-sm font-medium text-indigo-600 border border-blue-600 rounded hover:bg-blue-600 hover:text-white active:bg-blue-600 focus:outline-none focus:ring">--}}
-                {{--                           返回--}}
-                {{--                        </button>--}}
-                {{--                    </a>--}}
-                {{--                </div>--}}
+                <div>
+                    <a
+                        href="{{ url('doctor/prescription/create') }}"
+                        class="inline-block px-6 py-2.5
+                                    justify-center text-center
+                                    bg-blue-600 text-white font-medium text-xs leading-tight
+                                    uppercase rounded shadow-md hover:bg-blue-700
+                                    hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                                    active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+                        增加
+                    </a>
+                </div>
             </div>
             <div class="overflow-y-auto">
                 <table class="text-xs">
@@ -57,7 +65,7 @@
                         <tr class="border-b border-opacity-20 text-center">
                             <td class="p-6">
                                 <p>
-                                    {{ $key + 1 }}
+                                    {{ 5 * ($prescriptions->currentPage() - 1) + $key + 1 }}
                                 </p>
                             </td>
                             <td class="p-6">
@@ -76,8 +84,8 @@
                                 </p>
                             </td>
                             <td class="p-6">
-                                <a
-                                    href="{{ url('doctor/patients/'.$prescription->userId) }}"
+                                <button
+                                    onclick="destroy('{{ $prescription->userId }}/{{ $prescription->time }}')"
                                     class="inline-block px-6 py-2.5
                                     justify-center text-center
                                     bg-red-600 text-white font-medium text-xs leading-tight
@@ -85,30 +93,10 @@
                                     hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0
                                     active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">
                                     删除
-                                </a>
+                                </button>
                             </td>
                         </tr>
                     @endforeach
-{{--                    <tr class="border-b border-opacity-20 text-center">--}}
-{{--                        <td class="p-6">--}}
-{{--                            <p>1</p>--}}
-{{--                        </td>--}}
-{{--                        <td class="p-6">--}}
-{{--                            <p>123</p>--}}
-{{--                        </td>--}}
-{{--                        <td class="p-6">--}}
-{{--                            <p>--}}
-{{--                                1.Bobath握手训练:每天2次,每次2组,每组10遍<br>--}}
-{{--                                5.患手摸肩训练:每天3次,每次2组,每组10遍<br>--}}
-{{--                            </p>--}}
-{{--                        </td>--}}
-{{--                        <td class="p-6">--}}
-{{--                            <p>13年12月09日 17:02</p>--}}
-{{--                        </td>--}}
-{{--                        <td class="p-6">--}}
-{{--                            <a href="/" class="hover:text-blue-600">删除</a>--}}
-{{--                        </td>--}}
-{{--                    </tr>--}}
                     </tbody>
                 </table>
             </div>
@@ -117,4 +105,42 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(function () {
+            let pickerStart = $("#datepickerStart");
+            let pickerEnd = $("#datepickerEnd");
+
+            pickerStart.datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: "yy-mm-dd",
+            })
+
+            pickerEnd.datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: "yy-mm-dd",
+            })
+        });
+
+        function destroy(param) {
+            $.ajax({
+                type: 'GET',
+                url: param,
+                success: function (msg) {
+                    console.log(msg);
+                    console.log(param);
+                    alert('成功删除');
+                    window.location.href = "{{ url('doctor/prescription/'.$prescription->userId) }}"
+                },
+                error: function () {
+                    alert('删除失败，请重新尝试');
+                    console.log('无法删除，请重新删除');
+                }
+            })
+        }
+    </script>
 @endsection

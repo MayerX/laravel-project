@@ -56,17 +56,17 @@
                         <span class="mx-4 font-medium">基本信息</span>
                     </a>
 
-                    <a class="flex items-center px-4 py-2 mt-5 rounded-md {{ Request::is('doctor/prescription/index') ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
+                    <a class="flex items-center px-4 py-2 mt-5 rounded-md {{ Request::is('doctor/prescription/'.session()->get('patient_id')) ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
                        href="{{ url('doctor/prescription/'.session()->get('patient_id')) }}">
                         <span class="mx-4 font-medium">康复处方</span>
                     </a>
 
-                    <a class="flex items-center px-4 py-2 mt-5 rounded-md {{ Request::is('doctor/guide/index') ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
+                    <a class="flex items-center px-4 py-2 mt-5 rounded-md {{ Request::is('doctor/guide/'.session()->get('patient_id')) ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
                        href="{{ url('doctor/guide/'.session()->get('patient_id')) }}">
                         <span class="mx-4 font-medium">视频指导</span>
                     </a>
 
-                    <a class="flex items-center px-4 py-2 mt-5 rounded-md {{ Request::is('doctor/rehab/index') ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
+                    <a class="flex items-center px-4 py-2 mt-5 rounded-md {{ Request::is('doctor/rehab/'.session()->get('patient_id')) ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
                        href="{{ url('doctor/rehab/index/'.session()->get('patient_id')) }}">
                         <span class="mx-4 font-medium">康复数据</span>
                     </a>

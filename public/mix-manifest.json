@@ -3,5 +3,6 @@
     "/js/manifest.js": "/js/manifest.js",
     "/css/app.css": "/css/app.css",
     "/vendor/jquery/jquery.js": "/vendor/jquery/jquery.js",
-    "/vendor/jquery/jquery.niceScroll.js": "/vendor/jquery/jquery.niceScroll.js"
+    "/vendor/jquery/jquery.niceScroll.js": "/vendor/jquery/jquery.niceScroll.js",
+    "/vendor/i18n/datepicker-zh-CN.js": "/vendor/i18n/datepicker-zh-CN.js"
 }

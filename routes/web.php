@@ -6,6 +6,9 @@ use App\Http\Controllers\ArticlesContriller;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\GuideController;
+use App\Http\Controllers\PrescriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,26 +66,29 @@ Route::prefix('doctor')->name('Doctor.')->middleware('check.session')->group(fun
 
     // 患者信息
     Route::prefix('patients')->name('Patients.')->group(function () {
-        Route::get('', [DoctorController::class, 'show_all_patients'])->name('index');
-        Route::get('{patientId}', [DoctorController::class, 'show_patient'])->whereNumber('patientId')->name('show');
+        Route::get('', [PatientController::class, 'index'])->name('index');
+        Route::get('{patientId}', [PatientController::class, 'show'])
+            ->whereNumber('patientId')->name('show');
         Route::get('return', [DoctorController::class, 'quit_patient'])->name('return');
     });
 
     // 康复处方
     Route::prefix('prescription')->name('Prescription.')->group(function () {
-        Route::get('{patientId}', [DoctorController::class, 'show_prescription'])->whereNumber('patientId')->name('show');
-        Route::get('index', function () {
-            return view('resources/doctor/prescription/index');
-        })->name('index');
-        Route::get('show', function () {
-            return view('resources/doctor/prescription/show');
-        })->name('show');
+        Route::get('{patientId}', [PrescriptionController::class, 'show'])
+            ->whereNumber('patientId')->name('show');
+        Route::get('{patientId}/{time}', [PrescriptionController::class, 'destroy'])
+            ->whereNumber('patientId')
+            ->where('time', '(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})')
+            ->name('destroy');
+        Route::get('create', [PrescriptionController::class, 'create_get'])
+            ->name('create_get');
+        Route::post('create', [PrescriptionController::class, 'create_post'])
+            ->name('create_post');
     });
     // 视频指导
     Route::prefix('guide')->name('Guide.')->group(function () {
-        Route::get('index', function () {
-            return view('resources/doctor/guide/index');
-        })->name('index');
+        Route::get('{patientId}', [GuideController::class, 'index'])->name('index');
+        Route::post('{patientId}', [GuideController::class, 'update'])->name('update');
     });
     // 康复数据
     Route::prefix('rehab')->name('Rehab.')->group(function () {
