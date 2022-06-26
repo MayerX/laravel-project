@@ -67,7 +67,7 @@
                     </a>
 
                     <a class="flex items-center px-4 py-2 mt-5 rounded-md {{ Request::is('doctor/rehab/'.session()->get('patient_id')) ?  'text-gray-700 bg-gray-200' : 'text-gray-600 transition-colors duration-200 transform  hover:bg-gray-200 hover:text-gray-700'}}"
-                       href="{{ url('doctor/rehab/index/'.session()->get('patient_id')) }}">
+                       href="{{ url('doctor/rehab/'.session()->get('patient_id')) }}">
                         <span class="mx-4 font-medium">康复数据</span>
                     </a>
                 </nav>
@@ -87,7 +87,7 @@
                     data-mdb-ripple-color="light"
                     class="inline-block px-6 mt-5 py-2.5 justify-center bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
             >
-                返回
+                退出病人信息
             </button>
         @endif
         <a href="{{ url('index') }}" onclick="returnIndex()"

@@ -151,14 +151,18 @@
                                 <label for="address" class="text-sm">所属医院</label>
                                 <p id="firstname" type="text"
                                    class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
-                                    {{ session()->get('hospitalName')->find($detail['Hospital'])['name'] }}
+                                    @if($detail['Hospital'] != null)
+                                        {{ session()->get('hospitalName')->find($detail['Hospital'])['name'] }}
+                                    @endif
                                 </p>
                             </div>
                             <div class="col-span-3">
                                 <label for="address" class="text-sm">所属社区</label>
                                 <p id="firstname" type="text"
                                    class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400">
-                                    {{ session()->get('communityName')->find($detail['community'])['name'] }}
+                                    @if($detail['community'] != null)
+                                        {{ session()->get('communityName')->find($detail['community'])['name'] }}
+                                    @endif
                                 </p>
                             </div>
                             <div class="col-span-2">

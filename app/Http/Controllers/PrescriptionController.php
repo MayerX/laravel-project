@@ -22,16 +22,6 @@ class PrescriptionController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
@@ -45,7 +35,7 @@ class PrescriptionController extends Controller
 
         $actions = $this->actions;
 
-        return view('resources.doctor.prescription.create', compact('actions'));
+        return view('resources.prescription.create', compact('actions'));
     }
 
     public function create_post(Request $request)
@@ -72,40 +62,6 @@ class PrescriptionController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param Request $request
@@ -115,12 +71,27 @@ class PrescriptionController extends Controller
      */
     public function destroy(Request $request, $patient_id, $time)
     {
-        MembersComment::query()
+        $res =  MembersComment::query()
             ->where('userId', $patient_id)
             ->where('time', $time)
             ->delete();
 
-        return response()->json(['status' => '200', 'msg' => '成功删除']);
+        if ($res == 1){
+            $data = [
+                'status' => '200',
+                'msg' => 'success',
+                'code' => $res,
+            ];
+        }
+        else {
+            $data = [
+                'status' => '400',
+                'msg' => 'error',
+                'code' => $res,
+            ];
+        }
+
+        return response()->json($data);
     }
 
     /**
@@ -144,7 +115,7 @@ class PrescriptionController extends Controller
                 ->orderBy('mc.time', 'desc')
                 ->paginate(5);
 
-            return view('resources.doctor.prescription.show', compact('prescriptions', 'startTime', 'endTime'));
+            return view('resources.prescription.show', compact('prescriptions', 'startTime', 'endTime'));
         }
         else {
             $prescriptions = DB::table('members_comments as mc')
@@ -158,6 +129,6 @@ class PrescriptionController extends Controller
 //        dump($prescriptions);
 //        dump($prescriptions->items()[0]);
 
-        return view('resources.doctor.prescription.show', compact('prescriptions'));
+        return view('resources.prescription.show', compact('prescriptions'));
     }
 }

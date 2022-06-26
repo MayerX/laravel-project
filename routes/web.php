@@ -9,6 +9,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\GuideController;
 use App\Http\Controllers\PrescriptionController;
+use App\Http\Controllers\RehabController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,7 +77,7 @@ Route::prefix('doctor')->name('Doctor.')->middleware('check.session')->group(fun
     Route::prefix('prescription')->name('Prescription.')->group(function () {
         Route::get('{patientId}', [PrescriptionController::class, 'show'])
             ->whereNumber('patientId')->name('show');
-        Route::get('{patientId}/{time}', [PrescriptionController::class, 'destroy'])
+        Route::get('{patientId}/{time}/destroy', [PrescriptionController::class, 'destroy'])
             ->whereNumber('patientId')
             ->where('time', '(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})')
             ->name('destroy');
@@ -92,9 +93,22 @@ Route::prefix('doctor')->name('Doctor.')->middleware('check.session')->group(fun
     });
     // 康复数据
     Route::prefix('rehab')->name('Rehab.')->group(function () {
-        Route::get('index', function () {
-            return view('resources/doctor/rehab/index');
-        })->name('rehab');
+        Route::get('{patientId}', [RehabController::class, 'index'])
+            ->whereNumber('patientId')->name('index');
+        Route::get('{patientId}/{time}/destroy', [RehabController::class, 'destroy'])
+            ->whereNumber('patientId')
+            ->where('time', '(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})')
+            ->name('destroy');
+        Route::get('{patientId}/{time}', [RehabController::class, 'show_get'])
+            ->whereNumber('patientId')
+            ->where('time', '(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})')
+            ->name('show_get');
+        Route::post('{patientId}/{time}', [RehabController::class, 'show_post'])
+            ->whereNumber('patientId')
+            ->where('time', '(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})')
+            ->name('show_post');
+//        Route::get('{patientId}/sort', [RehabController::class, 'indexByMoveType'])
+//            ->whereNumber('patientId')->name('sort');
     });
     // 生成报告
     Route::prefix('report')->name('Report.')->group(function () {

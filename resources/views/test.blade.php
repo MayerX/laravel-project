@@ -1,11 +1,40 @@
-{{--@extends('layouts.doctor')--}}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+{{--    <script src="{{ asset('public/vendor/echarts/echarts.min.js') }}"></script>--}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4.8.0/dist/echarts.js"></script>
+</head>
+<body>
+<div class="contain" style="width: 50%;" id="">1235</div>
+<div class="contain" style="width: 50px;" id="contain">123</div>
+</body>
+<script>
+    let chartDom = document.getElementById('contain');
+    let myChart = echarts.init(chartDom);
+    let option;
 
-{{--<div class="flex items-center justify-center">--}}
-{{--    <div class="datepicker relative form-floating mb-3 w-96">--}}
-{{--        <input type="text"--}}
-{{--               class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"--}}
-{{--               placeholder="Select a date" />--}}
-{{--        <label for="floatingInput" class="text-gray-700">Select a date</label>--}}
-{{--    </div>--}}
-{{--</div>--}}
-{{ $request }}
+    option = {
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                data: [150, 230, 224, 218, 135, 147, 260],
+                type: 'line'
+            }
+        ]
+    };
+
+    option && myChart.setOption(option);
+
+</script>
+</html>

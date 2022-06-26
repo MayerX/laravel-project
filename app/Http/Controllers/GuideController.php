@@ -20,8 +20,23 @@ class GuideController extends Controller
 
         $patient = Member::query()->where('memberId', $patientId)->first();
         $patient['VideoGuideIP'] = $request['guideIP'];
-        $patient->save();
+        $res = $patient->save();
 
-        return response()->json(['status' => '200', 'msg' => $request['guideIP']]);
+        if ($res){
+            $data = [
+                'status' => '200',
+                'msg' => 'success',
+                'code' => $res,
+            ];
+        }
+        else {
+            $data = [
+                'status' => '400',
+                'msg' => 'error',
+                'code' => $res,
+            ];
+        }
+
+        return response()->json($data);
     }
 }

@@ -69,14 +69,22 @@ class PatientController extends Controller
     {
         $patient = Member::query()->where('userId', $patientId)->first();
         $detail = PersonalDetail::query()->where('userId', $patientId)->first();
-        $username = User::query()->where('userId', $patientId)->first()['username'];
+        $username = User::query()->where('userId', $patientId)->first();
         $doctorsId = explode(';', $patient['doctors']);
-        $doctorsName = array();
-        for ($i = 0; $i < count($doctorsId) - 1; $i += 1) {
-            $doctorsName[] = PersonalDetail::query()->where('userId', $doctorsId[$i])->first()['name'];
-        }
+        $doctorsName = PersonalDetail::query()->whereIn('userId', $doctorsId)->pluck('name');
+//        ddd($doctorsName);
+//        for ($i = 0; $i < count($doctorsId) - 1; $i += 1) {
+//            $doctorsName[] = PersonalDetail::query()->where('userId', $doctorsId[$i])->first()['name'];
+//        }
 //        dump($doctorsName);
 //        dump($patient);
+
+        if (empty($username['username'])){
+            $username = '';
+        }
+        else{
+            $username = $username['username'];
+        }
 
         session()->put('show_status', '1');
         session()->put('patient_name', $detail['name']);
